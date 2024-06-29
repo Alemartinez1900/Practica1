@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Lista de árboles</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <a class="navbar-brand" href="#">Control de Arboles</a>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{Arbol/nuevo}">Añadir árbol</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <h1>Lista de árboles</h1>
+            </div>
+
+            <table class="table table-dark table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID Árbol</th>
+                        <th>Ruta Imagen</th>
+                        <th>Nombre Común</th>
+                        <th>Tipo de Flor</th>
+                        <th>Dureza</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="arbol : ${arboles}">
+                        <td th:text="${arbol.idArbol}">ID Árbol</td>
+                        <td th:text="${arbol.rutaImagen}">Ruta Imagen</td>
+                        <td th:text="${arbol.nombreComun}">Nombre Común</td>
+                        <td th:text="${arbol.tipoFlor}">Tipo de Flor</td>
+                        <td th:text="${arbol.dureza}">Dureza</td>
+                        <td th:text="${arbol.descripcion}">Descripción</td>
+                        <td>
+                            <a th:href="@{/arbol/editar/{id}(id=${arbol.idArbol})}" class="btn btn-info">Editar</a>
+                            <a th:href="@{/arbol/eliminar/{id}(id=${arbol.idArbol})}" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
+
